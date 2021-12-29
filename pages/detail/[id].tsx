@@ -1,10 +1,39 @@
+import { useRouter } from "next/router";
+import { useCallback, useEffect, useState } from "react";
 import Footer from "../../components/organisms/Footer";
 import Navbar from "../../components/organisms/navbar";
 import TopUpForm from "../../components/organisms/TopUpForm";
 import TopUpItem from "../../components/organisms/TopUpItem";
+import { getDetailVoucher } from "../../services/player";
 
 
 export default function Detail() {
+    const {query, isReady} = useRouter()
+    const [dataItem, setDataItem] = useState({
+        name: '',
+        thumbnail: '',
+        category: {
+            name: ''
+        }
+    })
+
+    const [nominals, setNominals] = useState([])
+    const [payments, setPayments] = useState([])
+
+    const getVoucherDatailAPI = useCallback(async (id)=>{
+        const data = await getDetailVoucher(id)
+        console.log('data :', data)
+        setDataItem(data.voucher)
+        setNominals(data.voucher.nominals)
+        setPayments(data.payment)
+    }, [])
+
+    useEffect(()=>{ 
+        if (isReady) {
+            getVoucherDatailAPI(query.id)
+        } 
+    }, [isReady])
+
     return ( 
         <>
         <Navbar/>
@@ -22,7 +51,7 @@ export default function Detail() {
     
                         <TopUpItem type="dekstop"/>
                         <hr/>
-                        <TopUpForm/>
+                        <TopUpForm nominals={nominals} payments={payments}/>
                     </div>
                 </div>
             </div>

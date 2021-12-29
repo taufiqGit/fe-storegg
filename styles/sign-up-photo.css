@@ -35,6 +35,13 @@
     width: 100%;
 }
 
+.img-upload {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 @media (max-width:576px){
     .sign-up-photo .form-input{
         height: 100vh;
