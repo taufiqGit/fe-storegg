@@ -32,3 +32,21 @@ export interface NominalsTypes {
     coinName: string;
     price: number;
 }
+
+export interface LoginTypes {
+    email: string;
+    password: string;
+}
+
+export interface UserTypes {
+    avatar: string;
+    email: string;
+    id: string;
+    phoneNumber: string;
+    username: string;
+}
+
+export interface JWTPayloadTypes {
+    player: UserTypes;
+    iat: string;
+}

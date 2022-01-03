@@ -1,9 +1,11 @@
+
 import Image from 'next/image'
 import Auth from './auth'
 import Menu from './menu'
 import Toggle from './toggle'
 
 export default function Navbar() {
+    
     return(
     <section>
         <nav className="navbar navbar-expand-lg navbar-light bg-light bg-white pt-lg-40 pb-lg-40 pt-30 pb-50">

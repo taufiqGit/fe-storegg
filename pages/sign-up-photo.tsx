@@ -1,10 +1,9 @@
 import Image from "next/image"
-import Link from "next/link"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { useCallback, useEffect, useState } from "react"
-import { setSignUp } from "../services/auth"
+import { SetSignUp } from "../services/auth"
 import { getGameCategory } from "../services/player"
+import { useRouter } from "next/router";
 
 export default function SignUpPhoto() {
     const [categories, setCategories] = useState([])
@@ -15,6 +14,8 @@ export default function SignUpPhoto() {
         name: '',
         email: ''
     })
+
+    const router = useRouter()
 
     const getGameCategoryAPI = useCallback(async ()=>{
         const data = await getGameCategory()
@@ -27,12 +28,12 @@ export default function SignUpPhoto() {
     }, [])
 
     useEffect(()=>{
-        const getLocalForm = localStorage.getItem('user-form')
+        const getLocalForm: any = localStorage.getItem('user-form')
         setLocalForm(JSON.parse(getLocalForm))
     }, [])
 
-    const onSubmit = async()=>{
-        const getLocalForm = localStorage.getItem('user-form')
+    async function onSubmit (){
+        const getLocalForm: any = localStorage.getItem('user-form')
         const form = JSON.parse(getLocalForm)
         const data = new FormData()
 
@@ -45,9 +46,20 @@ export default function SignUpPhoto() {
         data.append('role', 'user')
         data.append('status', 'Y')
         data.append('favorite', favourite)
-
-        const result = await setSignUp(data)
+        // for (let val of data.entries()){
+        //     console.log('value data', val)
+        // }
+        
+        const result = await SetSignUp(data)
         console.log('result', result)
+        
+        if (result.error) {
+            toast.error(result.message)
+        } else{
+            toast.success("Register Berhasil !!")
+            router.push('/sign-up-success')
+            localStorage.removeItem('user-form')
+        }
     }
     
 
