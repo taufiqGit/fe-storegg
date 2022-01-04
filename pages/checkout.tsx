@@ -12,7 +12,7 @@ export default function Checkout(props: CheckoutProps) {
     const { user } = props
     console.log(user)
     return(
-        <section className="checkout mx-auto pt-md-100 pb-md-145 pt-30 pb-30">
+    <section className="checkout mx-auto pt-md-100 pb-md-145 pt-30 pb-30">
         <div className="container-fluid">
             <div className="logo text-md-center text-start pb-50">
                 <a className="" href="/">
@@ -48,7 +48,7 @@ export async function getServerSideProps({req}) {
     const IMG = process.env.NEXT_PUBLIC_IMG
     userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`
            
-    console.log('user ', userFromPayload)
+    //console.log('user ', userFromPayload)
     return {
         props: {
             user: userFromPayload
