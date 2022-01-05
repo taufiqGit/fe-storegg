@@ -1,7 +1,29 @@
+
+import { useEffect, useState } from "react"
+import { toast } from "react-toastify"
+import { getMemberOverview } from "../../../services/player"
 import Category from "./category"
 import TableRow from "./tableRow"
 
 export default function OverviewContent() {
+    const [count, setCount] = useState([])
+    const [data, setData] = useState([])
+
+    const getDataOverview = async()=>{
+        const response = await getMemberOverview()
+        if (response.error) {
+            toast.error(response.message)
+        } else {
+            //console.log('user, ', result)
+            setCount(response.data.count)
+            setData(response.data.data)
+        }       
+    }
+    
+    useEffect(()=>{
+        getDataOverview()
+    }, [])
+
     return(
         <main className="main-wrapper">
             <div className="ps-lg-0">

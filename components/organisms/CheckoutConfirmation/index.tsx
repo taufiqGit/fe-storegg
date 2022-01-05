@@ -1,10 +1,14 @@
 import Link from "next/link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 import { toast } from "react-toastify"
+import { setCheckout } from "../../../services/player"
 
 export default function CheckoutConfirmation() {
     const [checkbox, setCheckbox] = useState(false)
-    const onSubmit = ()=>{
+    const router = useRouter()
+
+    const onSubmit = async()=>{
         const dataItemLocal = localStorage.getItem('data-item')
         const dataTopupLocal = localStorage.getItem('data-topup')
 
@@ -13,6 +17,7 @@ export default function CheckoutConfirmation() {
 
         if (!checkbox) {
             toast.error("Pastikan anda telah melakukan pembayaran")
+            return
         }
 
         const data = {
@@ -23,7 +28,15 @@ export default function CheckoutConfirmation() {
             name: dataTopup.bankAccountName,
             accountUser: dataTopup.verifyID
         }
-        console.log("data :", data)
+        const response = await setCheckout(data)
+        console.log("res checkout :", response)
+
+        if (response.error) {
+            toast.error(response.message)
+        } else {
+            toast.success("Checkout Berhasil")
+            router.push("/complete-checkout")
+        }
     }
 
     return(

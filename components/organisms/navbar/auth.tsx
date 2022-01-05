@@ -49,9 +49,9 @@ export default function Auth(props: Partial<AuthProps>) {
                 </a>
 
                 <ul className="dropdown-menu border-0" aria-labelledby="dropdownMenuLink">
-                    <li><Link href="/member"><a className="dropdown-item text-lg color-palette-2" href="#">My Profile</a></Link></li>
-                    <li><Link href="/"><a className="dropdown-item text-lg color-palette-2" href="#">Wallet</a></Link></li>
-                    <li><Link href="/member/edit-profile"><a className="dropdown-item text-lg color-palette-2" href="#">Account Settings</a></Link>
+                    <li><Link href="/member"><a className="dropdown-item text-lg color-palette-2">My Profile</a></Link></li>
+                    <li><Link href="/"><a className="dropdown-item text-lg color-palette-2">Wallet</a></Link></li>
+                    <li><Link href="/member/edit-profile"><a className="dropdown-item text-lg color-palette-2">Account Settings</a></Link>
                     </li>
                     <li><a onClick={onLogout} className="dropdown-item text-lg color-palette-2" href="#">Log Out</a></li>
                 </ul>

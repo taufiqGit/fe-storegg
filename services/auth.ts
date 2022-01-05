@@ -11,7 +11,8 @@ export const SetSignUp = async (data: any)=>{
     return CallApi({
         url: URL,
         method: 'POST',
-        data
+        data,
+        token: false
     })
 }
 
@@ -21,6 +22,7 @@ export const SetSignIn = async(data: LoginTypes)=>{
     return CallApi({
         url: URL,
         method: 'POST',
-        data
+        data,
+        token: false
     })
 }
