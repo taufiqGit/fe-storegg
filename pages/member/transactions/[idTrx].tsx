@@ -47,7 +47,7 @@ export async function getServerSideProps({req, params}: getServerSidePropsTypes)
     userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`
     
     const response = await getTransactionsDetail(idTrx, jwtToken)
-    console.log('response ', response)
+    //console.log('response ', response)
     return {
         props: {
             dataTransactionDetail: response.data
