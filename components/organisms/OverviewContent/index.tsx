@@ -1,7 +1,8 @@
 
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { toast } from "react-toastify"
-import { getMemberOverview } from "../../../services/player"
+import { HistoryTransactionTypes, TopUpCategoriesTypes } from "../../../services/data-types"
+import { getMemberOverview } from "../../../services/member"
 import Category from "./category"
 import TableRow from "./tableRow"
 
@@ -9,20 +10,22 @@ export default function OverviewContent() {
     const [count, setCount] = useState([])
     const [data, setData] = useState([])
 
-    const getDataOverview = async()=>{
+    const getDataOverview = useCallback(async()=>{
         const response = await getMemberOverview()
         if (response.error) {
             toast.error(response.message)
         } else {
-            //console.log('user, ', result)
+            console.log('response, ', response)
             setCount(response.data.count)
             setData(response.data.data)
         }       
-    }
+    }, [getMemberOverview])
     
     useEffect(()=>{
         getDataOverview()
     }, [])
+
+    const IMG = process.env.NEXT_PUBLIC_IMG
 
     return(
         <main className="main-wrapper">
@@ -32,21 +35,13 @@ export default function OverviewContent() {
                     <p className="text-lg fw-medium color-palette-1 mb-14">Top Up Categories</p>
                     <div className="main-content">
                         <div className="row">
-                            <Category nominal={300000} icon="icon-cat-dekstop">
-                                Game
-                                <br/>
-                                Dekstop
-                            </Category>
-                            <Category nominal={540000} icon="icon-cat-mobile">
-                                Game
-                                <br/>
-                                Mobile
-                            </Category>
-                            <Category nominal={210000} icon="icon-cat-other">
-                                Others
-                                <br/>
-                                Categories
-                            </Category>
+                            {
+                                count.map((item: TopUpCategoriesTypes) =>(
+                                    <Category key={item._id} nominal={item.value} icon="icon-cat-dekstop">
+                                        {item.name}
+                                    </Category>
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -63,11 +58,21 @@ export default function OverviewContent() {
                                 </tr>
                             </thead>
                             <tbody>
-                                <TableRow title="Mobile Legends: The New Battle 2021" category="Desktop" item={300} price={30000} status="Pending" image="overview-1"/>
-                                <TableRow title="Mobile Legends: The New Battle 2021" category="Desktop" item={300} price={30000} status="Failed" image="overview-1"/>
-                                <TableRow title="Mobile Legends: The New Battle 2021" category="Desktop" item={300} price={30000} status="Pending" image="overview-1"/>
-                                <TableRow title="Mobile Legends: The New Battle 2021" category="Desktop" item={300} price={30000} status="Success" image="overview-1"/>
-                            
+                                {
+                                    data.map((item: HistoryTransactionTypes) =>{
+                                        return(
+                                            <TableRow 
+                                                key={item._id}
+                                                title={item.historyVoucherTopup.gameName} 
+                                                category={item.historyVoucherTopup.category}
+                                                item={`${item.historyVoucherTopup.coinQuantity} ${item.historyVoucherTopup.coinName}`} 
+                                                price={item.value} 
+                                                status={item.status} 
+                                                image={`${IMG}/${item.historyVoucherTopup.thumbnail}`}
+                                            />                       
+                                        )
+                                    })
+                                }
                             </tbody>
                         </table>
                     </div>

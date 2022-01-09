@@ -37,12 +37,3 @@ export const setCheckout = async (data: CheckoutTypes)=>{
         token: true
     }) 
 }
-
-export const getMemberOverview = async()=>{
-    const url = `${ROOT_API}/${API_VERSION}/players/dashboard`
-    return CallApi({
-        url,
-        method: 'GET',
-        token: true
-    })
-}

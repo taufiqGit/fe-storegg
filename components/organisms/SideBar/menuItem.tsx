@@ -6,11 +6,12 @@ interface MenuItemProps {
     title: string;
     icon: 'icon-overview' | 'icon-transactions' | 'icon-reward' | 'icon-messages' | 'icon-card' | 'icon-settings' | 'icon-logout';
     active?: boolean;
-    href: string
+    href?: string;
+    onClick?: ()=> void
 }
 
 export default function MenuItem(props: Partial<MenuItemProps>) {
-    const { title, icon, active, href } = props
+    const { title, icon, active, href, onClick } = props
 
     const classItem = cx({
         'item': true,
@@ -19,14 +20,20 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
     })
     
     return(
-    <div className={classItem}>
+    <div className={classItem} onClick={onClick}>
         <div className="me-3">
             <Image src={`/icon/${icon}.svg`} height={25} width={25} alt="Icon Menu"/>
         </div>
         <p className="item-title m-0">
-            <Link href={href}>
-            <a className="text-lg text-decoration-none">{title}</a>
-            </Link>
+            {
+                onClick ? (
+                    <a className="text-lg text-decoration-none">{title}</a>
+                ) : (
+                    <Link href={href}>
+                    <a className="text-lg text-decoration-none">{title}</a>
+                    </Link>                    
+                )
+            }
         </p>
     </div>
     )
