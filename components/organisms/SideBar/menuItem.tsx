@@ -18,6 +18,7 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
         'mb-30': true,
         'active': active
     })
+    console.log(href);
     
     return(
     <div className={classItem} onClick={onClick}>
@@ -29,7 +30,7 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
                 onClick ? (
                     <a className="text-lg text-decoration-none">{title}</a>
                 ) : (
-                    <Link href={href}>
+                    <Link href={`${href}`}>
                     <a className="text-lg text-decoration-none">{title}</a>
                     </Link>                    
                 )

@@ -6,10 +6,10 @@ import { getGameCategory } from "../services/player"
 import { useRouter } from "next/router";
 
 export default function SignUpPhoto() {
-    const [categories, setCategories] = useState([])
+    const [categories, setCategories] = useState<any[]>([])
     const [favourite, setFavourite] = useState('')
-    const [image, setImage] = useState(null)
-    const [imagePreview, setImagePreview] = useState(null)
+    const [image, setImage] = useState<any>('')
+    const [imagePreview, setImagePreview] = useState<any>(null)
     const [localForm, setLocalForm] = useState({
         name: '',
         email: ''
@@ -73,14 +73,14 @@ export default function SignUpPhoto() {
                             <div className="image-upload text-center">
                                 <label htmlFor="avatar">
                                     {
-                                        image ? <img src={imagePreview} className="img-upload" alt="preview"/> : <Image src="/img/upload.svg" height={120} width={120} alt="Upload"/>
+                                        image ? <img src={`${imagePreview}`} className="img-upload" alt="preview"/> : <Image src="/img/upload.svg" height={120} width={120} alt="Upload"/>
                                     }
                                  </label>
                                 <input 
                                 id="avatar" type="file" 
                                 name="avatar" accept="image/png, image/jpeg"
                                 onChange={(e)=> {
-                                    const img = e.target.files[0]
+                                    const img = e.target.files![0]
                                     setImagePreview(URL.createObjectURL(img))
                                     return setImage(img)
                                     }} />
