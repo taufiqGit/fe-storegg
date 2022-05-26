@@ -25,7 +25,7 @@ export default function Auth(props: Partial<AuthProps>) {
             const userFromPayload: UserTypes = payload.player
             const IMG = process.env.NEXT_PUBLIC_IMG
             userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`
-            console.log('user ', user)
+            //console.log('user ', user)
             setIsLogin(true)
             setUser(userFromPayload)
         }

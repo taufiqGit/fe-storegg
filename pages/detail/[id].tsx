@@ -33,6 +33,8 @@ export default function Detail() {
         if (isReady) {
             getVoucherDatailAPI(query.id)
         } 
+        console.log(isReady);
+        
     }, [isReady])
 
     return ( 
