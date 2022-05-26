@@ -18,7 +18,6 @@ export default function MenuItem(props: Partial<MenuItemProps>) {
         'mb-30': true,
         'active': active
     })
-    console.log(href);
     
     return(
     <div className={classItem} onClick={onClick}>
