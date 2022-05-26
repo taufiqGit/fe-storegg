@@ -23,6 +23,10 @@
     "react-toastify": "^7.0.4"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@babel/core": "^7.16.0",
     "@types/aos": "^3.0.4",
     "@types/js-cookie": "^3.0.1",
