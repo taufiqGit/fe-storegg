@@ -29,7 +29,7 @@ export default function SideBar(props: SidebarProps) {
                     <MenuItem title="Card" icon="icon-card" href="/member"/>
                     <MenuItem title="Rewards" icon="icon-reward" href="/member"/>
                     <MenuItem title="Settings" icon="icon-settings" active={activeMenu === "edit-profile"} href="/member/edit-profile"/>
-                    <MenuItem title="Log Out" icon="icon-logout" onClick={onLogout}/>
+                    <MenuItem title="Log Out" icon="icon-logout" href="/" onClick={onLogout}/>
                 </div>
                 <Footer/>
             </div>

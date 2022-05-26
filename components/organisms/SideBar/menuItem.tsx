@@ -6,7 +6,7 @@ interface MenuItemProps {
     title: string;
     icon: 'icon-overview' | 'icon-transactions' | 'icon-reward' | 'icon-messages' | 'icon-card' | 'icon-settings' | 'icon-logout';
     active?: boolean;
-    href?: string | undefined;
+    href?: string;
     onClick?: ()=> void
 }
 
