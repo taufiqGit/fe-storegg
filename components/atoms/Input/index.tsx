@@ -1,5 +1,7 @@
-export interface InputProps {
-    label: string
+import { InputHTMLAttributes } from "react";
+
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    label: string;
 }
 
 export default function Input(props: InputProps) {
