@@ -1,18 +1,19 @@
-import { Meta } from "@storybook/react";
-import StepItem, { StepItemProps } from "../../../../components/molecules/StepItem";
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable import/no-extraneous-dependencies */
+import { Meta } from '@storybook/react';
+import StepItem, { StepItemProps } from '../../../../components/molecules/StepItem';
 
 export default {
-    title: 'Component/molecules/StepItem',
-    component: StepItem
-} as Meta
+  title: 'Components/Molecules/StepItem',
+  component: StepItem,
+} as Meta;
 
-const Template = (args: StepItemProps)=> <StepItem {...args}/>
+const Template = (args: StepItemProps) => <StepItem {...args} />;
 
-export const Default = Template.bind({})
-
+export const Default = Template.bind({});
 Default.args = {
-    icon: 'step-1',
-    title: 'Hahah',
-    desc1: 'jauiuh hahha',
-    desc2: 'juauja'
-}
+  title: '1. Start',
+  icon: 'step1',
+  desc1: 'Pilih salah satu game',
+  desc2: 'yang ingin kamu top up',
+};
