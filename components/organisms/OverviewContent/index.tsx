@@ -30,7 +30,7 @@ export default function OverviewContent() {
     return(
         <main className="main-wrapper">
             <div className="ps-lg-0">
-                <h2 className="text-4xl fw-bold color-palette-1 mb-30">Overview</h2>
+                <h2 className="text-4xl fw-bold color-palette-1 mb-30 mt-20">Overview</h2>
                 <div className="top-up-categories mb-30">
                     <p className="text-lg fw-medium color-palette-1 mb-14">Top Up Categories</p>
                     <div className="main-content">

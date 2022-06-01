@@ -18,7 +18,7 @@ export default function SignUpPhoto() {
     const router = useRouter()
 
     const getGameCategoryAPI = useCallback(async ()=>{
-        const data = await getGameCategory()
+        const { data } = await getGameCategory()
         setCategories(data)
         setFavourite(data[0]._id)
     }, [getGameCategory])

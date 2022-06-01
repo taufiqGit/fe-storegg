@@ -24,10 +24,12 @@ export default function Auth(props: Partial<AuthProps>) {
             const payload: JWTPayloadTypes = jwtDecode(jwtToken)
             const userFromPayload: UserTypes = payload.player
             const IMG = process.env.NEXT_PUBLIC_IMG
-            userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`
-            //console.log('user ', user)
             setIsLogin(true)
-            setUser(userFromPayload)
+            if (userFromPayload.avatar) {
+                //console.log('user ', userFromPayload.avatar)  
+                userFromPayload.avatar = `${IMG}/${userFromPayload.avatar}`
+                setUser(userFromPayload)              
+            }
         }
     }, [])
 
@@ -44,7 +46,7 @@ export default function Auth(props: Partial<AuthProps>) {
             <div>
                 <a className="dropdown-toggle ms-lg-40" href="#" role="button" id="dropdownMenuLink"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    <Image src={user.avatar ? user.avatar : "/img/avatar-1.png"} className="rounded-circle" width={40} height={40}
+                    <Image src={user.avatar ? user.avatar : "/img/avatar-default.png"} className="rounded-circle" width={40} height={40}
                         alt="asd"/>
                 </a>
 
