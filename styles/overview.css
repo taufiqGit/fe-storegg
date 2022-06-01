@@ -85,14 +85,4 @@
         position: relative;
         overflow-x: hidden;
     }
-    /* .overview .latest-transaction table tr > td {
-        display: inline-block;
-        width: auto;
-        min-width: 200px;
-    }
-    .overview .latest-transaction table tr > th {
-        display: inline-block;
-        width: auto;
-        min-width: 200px;
-    } */
 }

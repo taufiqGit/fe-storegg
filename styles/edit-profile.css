@@ -4,7 +4,7 @@
 }
 
 .edit-profile main.main-wrapper{
-    /* margin-left: 340px; */
+    margin-left: 340px;
     height: 100%;
     /* margin-right: auto; */
     position: relative;
@@ -68,4 +68,18 @@
 
 .edit-profile .button-group{
     max-width: 467px;
+}
+
+@media (max-width:992px){
+    .edit-profile main.main-wrapper{
+        margin-left: 0px;
+        width: 100%;
+
+    padding: 50px 20px 50px 20px;
+    }
+    .edit-profile {
+        background-color: #FBFCFD;
+        position: relative;
+        overflow-x: hidden;
+    }
 }
